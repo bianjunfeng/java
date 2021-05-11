@@ -211,5 +211,13 @@ public static void main(String[] args) throws IOException {
 }
 }
 ```
+public class InputStreamReaderextends ReaderInputStreamReader 是字节流通向字符流的桥梁：它使用指定的 charset 读取字节并将其解码为字符。它使用的字符集可以由名称指定或显式给定，或者可以接受平台默认的字符集。 
 
+每次调用 InputStreamReader 中的一个 read() 方法都会导致从底层输入流读取一个或多个字节。要启用从字节到字符的有效转换，可以提前从底层流读取更多的字节，使其超过满足当前读取操作所需的字节。 
+
+为了达到最高效率，可要考虑在 BufferedReader 内包装 InputStreamReader。例如： 
+
+ BufferedReader in
+   = new BufferedReader(new InputStreamReader(System.in));
+ 
 
